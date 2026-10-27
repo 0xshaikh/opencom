@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment & secrets — never commit these
+.env
+.env.*
+*.pem
+*.key
+.secrets/
+*.pat
+*.token
+
+# Logs
+*.log
+npm-debug.log*
+logs/
+
+# Build / test artifacts
+dist/
+build/
+coverage/
+.nyc_output/
+*.tsbuildinfo
+
+# Local scratch
+tmp/
+temp/
+scratch/
+
+# Exports people save while using the app
+*.export.json
+*.opencom.json

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opencom — open-source customer messaging inbox</title>
+<meta name="description" content="Opencom is an open-source, local-first customer messaging inbox. A shared inbox for one person: searchable conversations, markdown replies, canned responses, tags, assignment, a live stats strip and JSON/CSV in and out. No account, no backend, no telemetry, zero dependencies.">
+<meta name="theme-color" content="#141416">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="alternate icon" href="favicon.svg">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <img class="brand__icon" src="icon.svg" alt="Opencom" width="30" height="30">
+    <div class="brand__text">
+      <span class="brand__name">Opencom</span>
+      <span class="brand__tag">customer inbox</span>
+    </div>
+  </div>
+
+  <div class="topbar__actions">
+    <button class="btn btn--primary" data-action="btn-new" title="Start a new conversation (n)">New conversation</button>
+    <button class="btn" data-action="btn-macros" title="Edit canned responses">Macros</button>
+    <button class="btn" data-action="btn-agents" title="Edit the agent roster">Agents</button>
+    <button class="btn btn--ghost" data-action="btn-import" title="Load a JSON export back in">Import</button>
+    <button class="btn btn--ghost" data-action="btn-export-json" title="Download the whole inbox as JSON">Export JSON</button>
+    <button class="btn btn--ghost" data-action="btn-export-csv" title="Download conversations as CSV">CSV: convos</button>
+    <button class="btn btn--ghost" data-action="btn-export-csv-msgs" title="Download every message as CSV">CSV: messages</button>
+    <button class="btn btn--ghost" data-action="btn-demo" title="Load a realistic sample inbox">Load demo</button>
+    <button class="btn btn--ghost btn--danger" data-action="btn-clear" title="Delete everything">Clear</button>
+    <input id="file-import" type="file" accept="application/json,.json" hidden>
+  </div>
+</header>
+
+<section class="statsbar" id="statsbar" aria-label="Inbox metrics"></section>
+
+<main class="layout">
+
+  <aside class="sidebar">
+    <div class="sidebar__controls">
+      <input id="search" class="search" type="search" placeholder="Search names, subjects, messages…" autocomplete="off">
+      <div class="filterrow">
+        <select id="f-status" aria-label="Filter by status">
+          <option value="all">All</option>
+          <option value="open">Open</option>
+          <option value="pending">Pending</option>
+          <option value="closed">Closed</option>
+        </select>
+        <select id="f-tag" aria-label="Filter by tag"><option value="all">All tags</option></select>
+        <select id="f-sort" aria-label="Sort conversations">
+          <option value="newest">Newest</option>
+          <option value="oldest">Oldest</option>
+        </select>
+      </div>
+    </div>
+    <ul id="convos" class="convolist" aria-label="Conversations"></ul>
+  </aside>
+
+  <section class="thread" id="thread"></section>
+
+</main>
+
+<footer class="statusbar">
+  <span id="status-storage"></span>
+  <span class="statusbar__sep">·</span>
+  <span id="status-counts"></span>
+  <span class="statusbar__spacer"></span>
+  <span class="statusbar__keys"><kbd>j</kbd>/<kbd>k</kbd> move · <kbd>↵</kbd> open · <kbd>/</kbd> macro · <kbd>Esc</kbd> close</span>
+  <span class="statusbar__repo"><a href="https://github.com/0xshaikh/opencom" target="_blank" rel="noopener">github.com/0xshaikh/opencom</a></span>
+</footer>
+
+<div id="modal-root"></div>
+<div id="toast-root" class="toasts" aria-live="polite" aria-atomic="false"></div>
+
+<script src="js/store.js"></script>
+<script src="js/convos.js"></script>
+<script src="js/stats.js"></script>
+<script src="js/csv.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

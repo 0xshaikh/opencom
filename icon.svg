@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2b2b30"/>
+      <stop offset="0.5" stop-color="#1b1b1f"/>
+      <stop offset="1" stop-color="#101012"/>
+    </linearGradient>
+    <linearGradient id="com" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4aa3ff"/>
+      <stop offset="1" stop-color="#38d6a6"/>
+    </linearGradient>
+    <linearGradient id="cell" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.05"/>
+    </linearGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2.5" stdDeviation="3" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- chrome tile -->
+  <rect width="100" height="100" rx="20" ry="20" fill="url(#bg)"/>
+
+  <!-- subtle thread backdrop: message rows, implied -->
+  <g opacity="0.13" stroke="#ffffff" stroke-width="1">
+    <path d="M10 26h44M10 38h30M46 38h24M10 50h36M52 50h26"/>
+  </g>
+
+  <!-- incoming bubble, top -->
+  <g filter="url(#soft)">
+    <path d="M16 12h42a7 7 0 0 1 7 7v17a7 7 0 0 1-7 7H36l-13 10v-10h-7a7 7 0 0 1-7-7V19a7 7 0 0 1 7-7z"
+          fill="url(#com)" fill-opacity="0.92" stroke="#ffffff" stroke-opacity="0.22" stroke-width="1.4"/>
+    <path d="M18 22h30M18 30h42M18 38h22" stroke="#101012" stroke-width="2.6" stroke-linecap="round"/>
+  </g>
+
+  <!-- inbox tray, bottom -->
+  <g filter="url(#soft)">
+    <rect x="10" y="60" width="80" height="30" rx="9" fill="url(#cell)" stroke="#ffffff" stroke-opacity="0.28" stroke-width="1.4"/>
+    <path d="M10 70h23l5 9h24l5-9h23" fill="none" stroke="#ffffff" stroke-opacity="0.34" stroke-width="1.6" stroke-linejoin="round"/>
+  </g>
+
+  <!-- the one message dropping into the tray -->
+  <g filter="url(#soft)">
+    <rect x="34" y="52" width="32" height="20" rx="6" fill="#ffffff" fill-opacity="0.10" stroke="#ffffff" stroke-opacity="0.30" stroke-width="1.3"/>
+    <path d="M40 60h20M40 66h12" stroke="url(#com)" stroke-width="2.6" stroke-linecap="round"/>
+  </g>
+  <circle cx="66" cy="52" r="3.4" fill="#38d6a6"/>
+</svg>

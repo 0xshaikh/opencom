@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2b2b30"/>
+      <stop offset="1" stop-color="#101012"/>
+    </linearGradient>
+    <linearGradient id="com" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4aa3ff"/>
+      <stop offset="1" stop-color="#38d6a6"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="7" fill="url(#bg)"/>
+  <!-- inbox tray -->
+  <path d="M5 18.5h5.4l1.4 3h8.4l1.4-3H27" fill="none" stroke="#ffffff" stroke-opacity="0.30" stroke-width="1.3" stroke-linejoin="round"/>
+  <rect x="4" y="17.6" width="24" height="9" rx="2.4" fill="none" stroke="#ffffff" stroke-opacity="0.30" stroke-width="1.3"/>
+  <!-- incoming message bubble -->
+  <g filter="none">
+    <path d="M9.6 6.4h12.8a2 2 0 0 1 2 2v6.4a2 2 0 0 1-2 2H15l-4.2 3v-3h-1.2a2 2 0 0 1-2-2V8.4a2 2 0 0 1 2-2z" fill="url(#com)" fill-opacity="0.9"/>
+  </g>
+  <path d="M11.4 10.6h9.2M11.4 13.2h6.4" stroke="#101012" stroke-width="1.3" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Syntax-check every JavaScript file
+        run: |
+          for f in js/*.js verify.js; do
+            echo "node --check $f"
+            node --check "$f"
+          done
+
+      - name: Run the test suite
+        run: node verify.js
+
+      - name: Confirm no hardcoded secrets were committed
+        run: |
+          if git ls-files -z | xargs -0 grep -nEi 'ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|AKIA[0-9A-Z]{16}'; then
+            echo "::error::A pattern that looks like a hardcoded secret was found in the committed tree."
+            exit 1
+          fi
+          echo "No hardcoded secrets found."
+
+      - name: Confirm the page references only local files
+        run: |
+          if grep -nE 'https?://[^"'"'"' )]+' index.html | grep -vE 'github\.com/0xshaikh/opencom'; then
+            echo "::error::index.html references an external URL."
+            exit 1
+          fi
+          echo "index.html has no external references."
